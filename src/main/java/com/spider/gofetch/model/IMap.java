@@ -5,6 +5,8 @@
  */
 package com.spider.gofetch.model;
 
+import java.util.List;
+
 /**
  * The interface of map in the application. It has the basic requirements for 
  * the map.
@@ -56,14 +58,14 @@ public interface IMap {
 	public RouteDetail findShortestRoute(String from, String to);
 	
 	/**
-	 * This method is to calculate the possibilities for the route between two stations. 
+	 * This method is to get all the possible routes between two stations. 
 	 * 
 	 * @param from the from station
 	 * @param to the to station
 	 * @param stops the number of "stops" along the way
 	 * 
-	 * @return the number of possibilities that exist for the way
+	 * @return the all possible routes between two stations
 	 */
-	public int calculatePossibilitiesForRoute(String from, String to, int stops);
+	public List<List<String>> calculatePossibilitiesForRoute(String from, String to, int stops);
 
 }

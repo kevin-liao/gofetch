@@ -120,8 +120,49 @@ public class GoFetchUtil {
 			return "either start or end station is invalid. please input the correct station.";
 		}
 
-		return graph.calculatePossibilitiesForRoute(from, to, numberOfStop)
-				+ "";
+		List<List<String>> paths = graph.calculatePossibilitiesForRoute(from, to, numberOfStop);
+		if (paths == null || paths.size() == 0)
+		{
+			return "no path found. please try other station.";
+		}
+		
+		return buildDetailForJourneyPlannerResult(paths);
+	}
+	
+	private static String buildDetailForJourneyPlannerResult(List<List<String>> paths)
+	{
+		int size = paths.size();
+		StringBuffer sb = new StringBuffer();
+		sb.append(size + " possible path. ");
+		for (int i = 0; i < size; i++)
+		{
+			List<String> path = paths.get(i);
+			int indexFromOne = i + 1;
+			sb.append("The [" + indexFromOne + "] path: ").append(buildFormattedPathString(path)).append(".\n");
+		}
+		return sb.toString();
+	}
+	
+	private static String buildFormattedPathString(List<String> path)
+	{
+		if (path == null || path.size() == 0)
+		{
+			return "";
+		}
+		int size = path.size();
+		StringBuffer sb = new StringBuffer();
+		for (int i = 0; i < size; i++ )
+		{
+			if (i == size - 1)
+			{
+				sb.append(path.get(i));
+			}
+			else
+			{
+				sb.append(path.get(i)).append("->");
+			}
+		}
+		return sb.toString();
 	}
 
 	/**

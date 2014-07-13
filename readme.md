@@ -24,14 +24,14 @@ mvn exec:java
 
 ## Howto - Journey Planner
 
-- click the 'tool' menu. 
+- click the 'Tool' menu. 
 - select the 'Journey Planner' menu item.
 - select the start and end stations in dropdown.
 - click the 'check' button. 
 
 ## Howto - Shortest Route
 
-- click the 'tool' menu and select the 'Shortest Route' menu item.
+- click the 'Tool' menu and select the 'Shortest Route' menu item.
 - select the start and end stations in dropdown.
 - click the 'check' button. 
 
@@ -49,7 +49,4 @@ mvn exec:java
 
 ## Design
 
-### MVC: Split the business logic apart from view. 
-### Use Java Swing for the UI part.
-### Use Dijkstra Algorithm to find the shortest route between two given nodes in graph.
-
+Please find the wiki page(https://github.com/kevin-liao/gofetch/wiki) for the details.

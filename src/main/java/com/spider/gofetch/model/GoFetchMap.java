@@ -445,17 +445,16 @@ public class GoFetchMap implements IMap {
 	 * .String, java.lang.String, int)
 	 */
 	@Override
-	public int calculatePossibilitiesForRoute(String from, String to, int stops) {
+	public List<List<String>> calculatePossibilitiesForRoute(String from, String to, int stops) {
 		// step1. check the achievable or not
 		int p1 = getPosition(from);
 		int p2 = getPosition(to);
 		if (!isAchievable(p1, p2)) {
-			return 0;
+			return null;
 		}
 
 		// step2. find all possible paths while connect from and to
-		List<List<String>> allPaths = getAllPaths(from, to);
-		return allPaths.size();
+		return getAllPaths(from, to);
 	}
 
 	/*

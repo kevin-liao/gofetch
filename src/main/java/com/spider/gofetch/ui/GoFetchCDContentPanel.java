@@ -35,7 +35,7 @@ public class GoFetchCDContentPanel extends JPanel {
 	private JLabel secondDashLabel = new JLabel(Constants.CD_LABEL_DELIMITER);
 
 	private JCheckBox textRouteCheckBox = new JCheckBox();
-	private JLabel orLabel = new JLabel(" or input the text delimited by '-' ");
+	private JLabel orLabel = new JLabel(" or input the text (E.g, A-B-C) ");
 
 	private JLabel inputLabel = new JLabel();
 	private JTextField routeTxt = new JTextField();

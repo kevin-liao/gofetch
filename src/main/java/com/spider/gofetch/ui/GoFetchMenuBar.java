@@ -55,7 +55,7 @@ public class GoFetchMenuBar extends JMenuBar {
 		toolMenu.add(journeyPlannerMenuItem);
 		toolMenu.add(shortestRouteMenuItem);
 
-		// Config menu
+		// Map Admin menu
 		JMenu configMenu = new JMenu("Map Admin");
 		JMenuItem addNewStationMenuItem = new JMenuItem("Add New Station",
 				KeyEvent.VK_A);
