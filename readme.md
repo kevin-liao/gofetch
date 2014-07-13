@@ -7,7 +7,7 @@ This is readme of GoFetch Application for Spider Tracks .
 Run the following commands in your terminal. It will prompt you to run the demo.
 
 ```terminal
-git clone git@https://github.com/kevin-liao/gofetch.git gofetch
+git clone https://github.com/kevin-liao/gofetch.git gofetch
 cd gofetch
 mvn compile
 mvn exec:java
