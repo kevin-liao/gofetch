@@ -7,6 +7,8 @@ package com.spider.gofetch.controller;
 
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import com.spider.gofetch.model.GoFetchMapFactory;
 import com.spider.gofetch.model.IMap;
 import com.spider.gofetch.model.RouteDetail;
@@ -20,6 +22,11 @@ import com.spider.gofetch.util.GoFetchUtil;
  *
  */
 public class GoFetchController {
+	
+	/**
+	 * the logger instance
+	 */
+	private static Logger logger = Logger.getLogger(GoFetchController.class);
 	
 	/**
 	 * the map instance inside the controller
@@ -71,12 +78,16 @@ public class GoFetchController {
 		}
 		// check the route string is valid or not
 		if (!GoFetchUtil.isValidRouteString(route)) {
-			return "the route string is invalid. please correct it.";
+			String message = "the route string is invalid. please correct it.";
+			logger.info(message);
+			return message;
 		}
 
 		// check the route is valid or not by map
 		if (!goFetchMap.isValidRoute(route)) {
-			return "the route is invalid. please input the correct route.";
+			String message = "the route is invalid. please input the correct route.";
+			logger.info(message);
+			return message;
 		}
 
 		return goFetchMap.calculateDistance(route) + "";
@@ -127,12 +138,16 @@ public class GoFetchController {
 			String stops) {
 		// if map is null
 		if (goFetchMap == null) {
-			return "the map is null. please load the map firstly.";
+			String message = "the map is null. please load the map firstly.";
+			logger.info(message);
+			return message;
 		}
 
 		// if the from and to is null or empty
 		if (from == null || from.equals("") || to == null || to.equals("")) {
-			return "The from and to string is invalid. please correct it.";
+			String message = "The from and to string is invalid. please correct it.";
+			logger.info(message);
+			return message;
 		}
 
 		// stops must be the integer numbers
@@ -141,13 +156,16 @@ public class GoFetchController {
 			try {
 				numberOfStop = Integer.parseInt(stops);
 			} catch (Exception e) {
+				logger.error(e.getStackTrace());
 				return "The stops must be a number.";
 			}
 		}
 
 		// check the route is valid or not by map
 		if (!goFetchMap.isValidStation(from) || !goFetchMap.isValidRoute(to)) {
-			return "either start or end station is invalid. please input the correct station.";
+			String message = "either start or end station is invalid. please input the correct station.";
+			logger.info(message);
+			return message;
 		}
 
 		List<List<String>> paths = goFetchMap.calculatePossibilitiesForRoute(from, to, numberOfStop);

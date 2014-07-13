@@ -8,6 +8,8 @@ package com.spider.gofetch.util;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import com.spider.gofetch.dijkstra.DijkstraGraph;
 import com.spider.gofetch.dijkstra.Edge;
 import com.spider.gofetch.dijkstra.Vertex;
@@ -19,6 +21,11 @@ import com.spider.gofetch.dijkstra.Vertex;
  * 
  */
 public class GoFetchUtil {
+	
+	/**
+	 * the logger instance
+	 */
+	private static Logger logger = Logger.getLogger(GoFetchUtil.class);
 
 	/**
 	 * build the detail for Journey Planner result.
@@ -183,7 +190,7 @@ public class GoFetchUtil {
 				dijkEdges.add(edge);
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error(e.getStackTrace());
 		}
 		return new DijkstraGraph(dijkVertexes, dijkEdges);
 	}

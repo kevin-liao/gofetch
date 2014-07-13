@@ -14,6 +14,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.apache.log4j.Logger;
+
 /**
  * This class is used to find the shortest path in graph
  * 
@@ -21,6 +23,11 @@ import java.util.Set;
  * 
  */
 public class DijkstraAlgorithm {
+	
+	/**
+	 * the logger instance
+	 */
+	private static Logger logger = Logger.getLogger(DijkstraAlgorithm.class);
 
 	private final List<Vertex> nodes;
 	private final List<Edge> edges;
@@ -77,6 +84,7 @@ public class DijkstraAlgorithm {
 				return edge.getWeight();
 			}
 		}
+		logger.error("System meet an error in getDistance().");
 		throw new RuntimeException("Should not happen");
 	}
 
