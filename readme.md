@@ -2,8 +2,6 @@
 
 This is readme of GoFetch Application for Spider Tracks .
 
-I am running on both Windows 7 and Mac OS X. They works for both.
-
 ## Running the application demo
 
 Run the following commands in your terminal. It will prompt you to run the demo.

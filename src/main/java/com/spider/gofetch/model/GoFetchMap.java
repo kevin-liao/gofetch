@@ -365,7 +365,11 @@ public class GoFetchMap implements IMap {
 	 */
 	@Override
 	public int calculateDistance(String route) {
-		//
+		// if route is null or empty
+		if (route == null || route.equals("")) {
+			return 0;
+		}
+		
 		String[] stations = route.split(DELIMITER_BETWEEN_STATIONS);
 		if (stations == null || stations.length == 0) {
 			return 0;
