@@ -9,8 +9,9 @@ I am running on both Windows 7 and Mac OS X. They works for both.
 Run the following commands in your terminal. It will prompt you to run the demo.
 
 ```terminal
-git clone git@https://github.com/kevin-liao/gofetch.git ~/gofetch
+git clone git@https://github.com/kevin-liao/gofetch.git gofetch
 cd gofetch
+mvn compile
 mvn exec:java
 ```
 
