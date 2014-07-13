@@ -6,14 +6,11 @@
 package com.spider.gofetch.ui;
 
 import java.awt.Rectangle;
-import java.util.List;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import com.spider.gofetch.model.GoFetchMapFactory;
-import com.spider.gofetch.model.IMap;
-import com.spider.gofetch.util.GoFetchUtil;
+import com.spider.gofetch.controller.GoFetchController;
 
 /**
  * The main frame class in the application, which contains all other panels.
@@ -31,11 +28,11 @@ public class GoFetchMainFrame extends JFrame {
 	private GoFetchJourneyPlannerPanel journeyPlannerPanel = null;
 
 	private GoFetchShortestRoutePanel shortestRoutePanel = null;
-
+	
 	/**
-	 * the map instance for the application
+	 * the controller instance
 	 */
-	private IMap map;
+	private GoFetchController controller;
 
 	/**
 	 * the default constructor
@@ -62,11 +59,10 @@ public class GoFetchMainFrame extends JFrame {
 
 		// add the current panel
 		this.getContentPane().add(currentPanel);
-
-		// load the data and build the graph
-		String[] vexs = GoFetchUtil.loadVexDataStorage();
-		List<String> edges = GoFetchUtil.loadEdgesFromDataStorage();
-		map = GoFetchMapFactory.getInstance().buildMap(vexs, edges);
+		
+		// create a new controller instance
+		controller = new GoFetchController();
+		controller.loadMap();
 	}
 
 	public void showCalculateDistancePanel() {
@@ -114,8 +110,11 @@ public class GoFetchMainFrame extends JFrame {
 		this.getContentPane().add(currentPanel);
 	}
 
-	public IMap getMap() {
-		return map;
+	/**
+	 * @return the controller instance
+	 */
+	public GoFetchController getController() {
+		return controller;
 	}
 
 }

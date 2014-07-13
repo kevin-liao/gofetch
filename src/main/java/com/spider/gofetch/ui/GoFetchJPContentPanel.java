@@ -86,7 +86,7 @@ public class GoFetchJPContentPanel extends JPanel {
 	}
 	
 	private void initComboBox() {
-		IMap map = this.getParentPanel().getMainFrame().getMap();
+		IMap map = getParentPanel().getMainFrame().getController().getGoFetchMap();;
 		if (map == null) {
 			return;
 		}

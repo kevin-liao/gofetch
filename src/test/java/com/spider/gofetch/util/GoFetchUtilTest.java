@@ -5,11 +5,11 @@
  */
 package com.spider.gofetch.util;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
+
+import java.util.List;
 
 import org.junit.Test;
-
-import com.spider.gofetch.model.IMap;
 
 /**
  * @author liao
@@ -18,10 +18,10 @@ import com.spider.gofetch.model.IMap;
 public class GoFetchUtilTest {
 
 	@Test
-	public void testCalculateDistanceForRoute() {
-		IMap graph = null;
-		String route = "AB";
-		String distance = GoFetchUtil.calculateDistanceForRoute(graph, route);
-		assertEquals(distance, "the map is null. please load the map firstly.");
+	public void testbuildDetailForJourneyPlannerResult() {
+		
+		List<List<String>> paths = null;
+		String distance = GoFetchUtil.buildDetailForJourneyPlannerResult(paths);
+		assertNull(distance);
 	}
 }

@@ -13,7 +13,6 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import com.spider.gofetch.util.Constants;
-import com.spider.gofetch.util.GoFetchUtil;
 
 /**
  * The Calculate Distance Panel in UI.
@@ -100,7 +99,7 @@ public class GoFetchCalculateDistancePanel extends JPanel {
 		}
 		
 		// calculate the distance of the route
-		String distance = GoFetchUtil.calculateDistanceForRoute(mainFrame.getMap(), route);
+		String distance = mainFrame.getController().calculateDistanceForRoute(route);
 		contentPanel.getDistanceTxt().setText(distance);
 	}
 	

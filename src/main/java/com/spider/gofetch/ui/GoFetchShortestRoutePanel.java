@@ -13,7 +13,6 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import com.spider.gofetch.util.Constants;
-import com.spider.gofetch.util.GoFetchUtil;
 
 /**
  * The Shorted Route Panel in UI.
@@ -92,7 +91,7 @@ public class GoFetchShortestRoutePanel extends JPanel {
 		String from = (String)contentPanel.getStartBox().getSelectedItem();
 		String to = (String)contentPanel.getEndBox().getSelectedItem();
 		// find the shortest route and show it
-		String detail = GoFetchUtil.findShortestRoute(mainFrame.getMap(), from, to);
+		String detail = mainFrame.getController().findShortestRoute(from, to);
 		contentPanel.getDetailTxtArea().setText(detail);
 	}
 	

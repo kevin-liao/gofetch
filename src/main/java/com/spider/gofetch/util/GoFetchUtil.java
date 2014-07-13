@@ -11,126 +11,29 @@ import java.util.List;
 import com.spider.gofetch.dijkstra.DijkstraGraph;
 import com.spider.gofetch.dijkstra.Edge;
 import com.spider.gofetch.dijkstra.Vertex;
-import com.spider.gofetch.model.IMap;
-import com.spider.gofetch.model.RouteDetail;
 
 /**
+ * Utility class in the application.
+ * 
  * @author liao
  * 
  */
 public class GoFetchUtil {
 
 	/**
+	 * build the detail for Journey Planner result.
 	 * 
-	 * @param map
-	 *            the map instance
-	 * @param route
-	 *            the string contains all stations in the route
 	 * 
-	 * @return the distance of this specific route if it is a valid route.
-	 *         otherwise return the message to tell customer the route is
-	 *         invalid.
+	 * @param paths the list of path
+	 * @return the path string value
 	 */
-	public static String calculateDistanceForRoute(IMap map, String route) {
-		//
-		if (map == null) {
-			return "the map is null. please load the map firstly.";
-		}
-		// check the route string is valid or not
-		if (!isValidRouteString(route)) {
-			return "the route string is invalid. please correct it.";
-		}
-
-		// check the route is valid or not by map
-		if (!map.isValidRoute(route)) {
-			return "the route is invalid. please input the correct route.";
-		}
-
-		return map.calculateDistance(route) + "";
-	}
-
-	/**
-	 * This method is to try to find the shortest route between from and to
-	 * station
-	 * 
-	 * @param map
-	 *            the map
-	 * @param from
-	 *            the from station
-	 * @param to
-	 *            the to station
-	 * @return
-	 */
-	public static String findShortestRoute(IMap map, String from, String to) {
-		// if graph is null
-		if (map == null) {
-			return "the map is null. please load the map firstly.";
-		}
-
-		// if the from and to is null or empty
-		if (from == null || from.equals("") || to == null || to.equals("")) {
-			return "The from and to string is invalid. please correct it.";
-		}
-
-		// check the route is valid or not by graph
-		if (!map.isValidStation(from) || !map.isValidRoute(to)) {
-			return "either start or end station is invalid. please input the correct station.";
-		}
-
-		RouteDetail detail = map.findShortestRoute(from, to);
-		if (detail == null) {
-			return "could not find the shortest route between start or end station. please try other stations.";
-		} else {
-			return detail.buildTheRouteDetail();
-		}
-	}
-
-	/**
-	 * 
-	 * @param graph
-	 * @param from
-	 * @param to
-	 * @param stops
-	 * @return
-	 */
-	public static String calculatePossibilitiesForRoute(IMap graph,
-			String from, String to, String stops) {
-		// if graph is null
-		if (graph == null) {
-			return "the map is null. please load the map firstly.";
-		}
-
-		// if the from and to is null or empty
-		if (from == null || from.equals("") || to == null || to.equals("")) {
-			return "The from and to string is invalid. please correct it.";
-		}
-
-		// stops must be the integer numbers
-		int numberOfStop = -1;
-		if (stops != null && !stops.equals("")) {
-			try {
-				numberOfStop = Integer.parseInt(stops);
-			} catch (Exception e) {
-				return "The stops must be a number.";
-			}
-		}
-
-		// check the route is valid or not by graph
-		if (!graph.isValidStation(from) || !graph.isValidRoute(to)) {
-			return "either start or end station is invalid. please input the correct station.";
-		}
-
-		List<List<String>> paths = graph.calculatePossibilitiesForRoute(from, to, numberOfStop);
+	public static String buildDetailForJourneyPlannerResult(List<List<String>> paths)
+	{
 		if (paths == null || paths.size() == 0)
 		{
-			return "no path found. please try other station.";
+			return null;
 		}
 		
-		return buildDetailForJourneyPlannerResult(paths);
-	}
-	
-	private static String buildDetailForJourneyPlannerResult(List<List<String>> paths)
-	{
 		int size = paths.size();
 		StringBuffer sb = new StringBuffer();
 		sb.append(size + " possible path. ");
@@ -232,7 +135,7 @@ public class GoFetchUtil {
 	 * 
 	 * @return true is the route is valid, false if it is not valid
 	 */
-	private static boolean isValidRouteString(String route) {
+	public static boolean isValidRouteString(String route) {
 		// if the route is null or empty
 		if (route == null || route.equals("") || route.trim().equals("")) {
 			return false;

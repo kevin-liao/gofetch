@@ -13,7 +13,6 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import com.spider.gofetch.util.Constants;
-import com.spider.gofetch.util.GoFetchUtil;
 
 /**
  * The Journey Planner Panel in UI.
@@ -93,7 +92,8 @@ public class GoFetchJourneyPlannerPanel extends JPanel {
 		String to = (String)contentPanel.getEndBox().getSelectedItem();
 		String stops = contentPanel.getStopsTxt().getText();
 		// find the shortest route and show it
-		String possibilities = GoFetchUtil.calculatePossibilitiesForRoute(mainFrame.getMap(), from, to, stops);
+		String possibilities = mainFrame.getController()
+				.calculatePossibilitiesForRoute(from, to, stops);
 		contentPanel.getPossiblitiesTxt().setText(possibilities);
 	}
 	

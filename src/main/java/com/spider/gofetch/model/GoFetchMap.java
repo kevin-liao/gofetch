@@ -401,7 +401,7 @@ public class GoFetchMap implements IMap {
 			return null;
 		}
 		
-		// step2. build a dijkstra graph to find all shorted path
+		// step2. build a dijkstra graph to find all shortest path
 		DijkstraGraph dijkstraGraph = GoFetchUtil.buildDijkstraGraph(mVexs, edges);
 		DijkstraAlgorithm algorithm = new DijkstraAlgorithm(dijkstraGraph);
 		Vertex src = GoFetchUtil.getDijkVertexByName(dijkstraGraph.getVertexes(), from);
