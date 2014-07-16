@@ -446,10 +446,10 @@ public class GoFetchMap implements IMap {
 	 * 
 	 * @see
 	 * com.spider.gofetch.model.IGraph#calculatePossibilitiesForRoute(java.lang
-	 * .String, java.lang.String, int)
+	 * .String, java.lang.String)
 	 */
 	@Override
-	public List<List<String>> calculatePossibilitiesForRoute(String from, String to, int stops) {
+	public List<List<String>> calculatePossibilitiesForRoute(String from, String to) {
 		// step1. check the achievable or not
 		int p1 = getPosition(from);
 		int p2 = getPosition(to);

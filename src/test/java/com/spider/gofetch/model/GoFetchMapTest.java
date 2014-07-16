@@ -44,7 +44,7 @@ public class GoFetchMapTest extends GoFetchBaseTest{
 	
 	@Test
 	public void testCalculatePossibilitiesForRoute() {
-		List<List<String>> paths = map.calculatePossibilitiesForRoute("A", "C", 1);
+		List<List<String>> paths = map.calculatePossibilitiesForRoute("A", "C");
 		assertEquals(2, paths.size());
 		assertEquals(3, paths.get(1).size());
 	}

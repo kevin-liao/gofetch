@@ -5,6 +5,7 @@
  */
 package com.spider.gofetch.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -160,6 +161,14 @@ public class GoFetchController {
 				return "The stops must be a number.";
 			}
 		}
+		
+		// if the number of stops is less than 0
+		if (numberOfStop < 0)
+		{
+			String message = "the stops should be equal or large than 0.";
+			logger.info(message);
+			return message;
+		}
 
 		// check the route is valid or not by map
 		if (!goFetchMap.isValidStation(from) || !goFetchMap.isValidRoute(to)) {
@@ -168,12 +177,40 @@ public class GoFetchController {
 			return message;
 		}
 
-		List<List<String>> paths = goFetchMap.calculatePossibilitiesForRoute(from, to, numberOfStop);
+		List<List<String>> paths = goFetchMap.calculatePossibilitiesForRoute(from, to);
 		if (paths == null || paths.size() == 0)
 		{
-			return "no path found. please try other station.";
+			String message = "no path found between the start and end station. please try other stations.";
+			logger.info(message);
+			return message;
 		}
 		
+		paths = filterPathByNumberOfStop(paths, numberOfStop);
+		
 		return GoFetchUtil.buildDetailForJourneyPlannerResult(paths);
+	}
+	
+	/**
+	 * filter path which have different length.
+	 * E.g, if A is start station, and B is end station.
+	 * and number of stop is 3.
+	 * so path which has more than 5 edges would be removed.
+	 * 
+	 * @param paths the all possible paths
+	 * @param numberOfStop the number of stops
+	 */
+	private List<List<String>> filterPathByNumberOfStop(List<List<String>> paths, int numberOfStop)
+	{
+		List<List<String>> newPaths = new ArrayList<List<String>>();
+		int count = numberOfStop + 2;
+		for (List<String> path : paths)
+		{
+			if (path.size() <= count)
+			{
+				newPaths.add(path);
+			}
+		}
+		
+		return newPaths;
 	}
 }

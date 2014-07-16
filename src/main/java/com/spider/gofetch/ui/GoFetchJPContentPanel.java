@@ -66,7 +66,6 @@ public class GoFetchJPContentPanel extends JPanel {
 		inputStopsLabel.setText("Input the number of stops: ");
 		inputStopsLabel.setBounds(new Rectangle(0, 80, 200, 20));
 		stopsTxt.setBounds(new Rectangle(210, 80, 100, 20));
-		stopsTxt.setEditable(false);
 		
 		outputLabel.setText("The possibilities of routes are: ");
 		outputLabel.setBounds(new Rectangle(0, 100, 200, 20));

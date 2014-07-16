@@ -62,10 +62,9 @@ public interface IMap {
 	 * 
 	 * @param from the from station
 	 * @param to the to station
-	 * @param stops the number of "stops" along the way
 	 * 
 	 * @return the all possible routes between two stations
 	 */
-	public List<List<String>> calculatePossibilitiesForRoute(String from, String to, int stops);
+	public List<List<String>> calculatePossibilitiesForRoute(String from, String to);
 
 }

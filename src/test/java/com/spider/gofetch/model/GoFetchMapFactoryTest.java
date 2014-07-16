@@ -34,7 +34,7 @@ public class GoFetchMapFactoryTest extends GoFetchBaseTest{
 		IMap map = factory.buildMap(stations, routes);
 		assertEquals(12, map.calculateDistance("A-B"));
 		
-		List<List<String>> paths = map.calculatePossibilitiesForRoute("A", "C", 1);
+		List<List<String>> paths = map.calculatePossibilitiesForRoute("A", "C");
 		assertEquals(2, paths.size());
 		assertEquals(3, paths.get(1).size());
 	}
