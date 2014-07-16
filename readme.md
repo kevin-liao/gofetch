@@ -37,13 +37,11 @@ mvn exec:java
 
 - Calculate Distance. This feature is working fine.
 
-- Journey Planner. It works fine if the stops field is NOT set .
+- Journey Planner. This feature is working fine.
 
 - Shortest Route. It works fine if start and end station are not the same.
 
 ## Unfinished functions
-
-- Journey Planner. Have some issues dealing with the requirements of a maximum or exact number of “stops" along the way. 
 
 - Shortest Route. Edge case. 1) If the start and end station are the same.
 
